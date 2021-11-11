@@ -26,12 +26,6 @@ const middlewares = jsonServer.defaults({
 // Set default middlewares (logger, static, cors and no-cache)
 server.use(middlewares);
 
-// server.use(
-//   jsonServer.rewriter({
-//     "/api/*": "/$1",
-//   })
-// );
-
 // To handle POST, PUT and PATCH you need to use a body-parser. Using JSON Server's bodyParser
 server.use(jsonServer.bodyParser);
 
@@ -51,7 +45,7 @@ server.use((req, res, next) => {
   next();
 });
 
-server.post("/courses/", function (req, res, next) {
+server.post("/coursesList/", function (req, res, next) {
   const error = validateCourse(req.body);
   if (error) {
     res.status(400).send(error);
